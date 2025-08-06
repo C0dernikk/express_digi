@@ -1,7 +1,8 @@
+import 'dotenv/config'
 import express from "express";
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 // app.get('/', (req, res) => {
 //     res.send('Hello from Nikhil!')
@@ -43,7 +44,6 @@ app.get("/teas/:id", (req, res) => {
 });
 
 //Update tea
-
 app.put("/teas/:id", (req, res) => {
   const tea = teaData.find((t) => t.id === parseInt(req.params.id));
   if (!tea) {
@@ -62,7 +62,6 @@ app.put("/teas/:id", (req, res) => {
 });
 
 //Delete tea
-
 app.delete("/teas/:id", (req, res) => {
   const index = teaData.findIndex((t) => t.id === parseInt(req.params.id));
   if (index === -1) {
